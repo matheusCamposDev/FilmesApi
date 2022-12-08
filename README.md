@@ -1,15 +1,38 @@
 # FilmesApi
 
-Tarefas feitas durante o desenvolvimento do projeto
+API que permite criar, ler, editar e excluir um filme (CRUD) através de requisições.
 
-- Preparar o ambiente no Windows e Linux.
-- Enviar requisições para a API.
-- Preparar a API para receber requisições.
-- A finalidade do verbo POST.
-- Criar um recurso no sistema.
-- Adicionar validações nos parâmetros enviados.
-- Recuperar informações da API.
-- A finalidade do verbo GET.
-- Enviar parâmetros através da URL de requisição.
-- Filtrar recursos para retornar para o usuário.
-- Retornar as informações para o usuário com base no tipo de requisição.
+# Tecnologias
+
+1. .Net 5.0
+2. MySql
+3. Postman
+
+# CRUD
+
+**CREATE**
+
+Utilizando o Postman, devemos enviar uma requesição do tipo `post` para http://localhost:5000/filme
+
+Exemplo Json:
+
+    {
+      "Titulo": "De Volta Para o Futuro",
+      "Diretor": "Robert Zemeckis",
+      "Genero": "Ficção científica, aventura",
+      "Duracao": 116
+    }
+
+Ao clicar no botão `send` haverá uma reposta de `Status: 201 created` e uma informação referente ao json criado com `"id": 1`
+
+Exemplo da resposta após a requisição:
+
+    {
+      "Id": 1
+      "titulo": "De Volta Para o Futuro",
+      "diretor": "Robert Zemeckis",
+      "genero": "Ficção científica, aventura",
+      "duracao": 116
+    }
+    
+Desse modo conseguimos criar o primeiro filme utilizando a API e salvar dentro do banco de dados.
