@@ -4,9 +4,9 @@ API que permite criar, ler, editar e excluir um filme (CRUD) através de requisi
 
 # Tecnologias
 
-1. .Net 5.0
-2. MySql
-3. Postman
+1. .Net 5.0 :scream:
+2. MySql 8.0 :+1:
+3. Postman :smiley:
 
 # CRUD
 
@@ -36,3 +36,9 @@ Exemplo da resposta após a requisição:
     }
     
 Desse modo conseguimos criar o primeiro filme utilizando a API e salvar dentro do banco de dados.
+
+**READ**
+
+:warning: :runner: 
+
+:construction: Em construção :construction: 
