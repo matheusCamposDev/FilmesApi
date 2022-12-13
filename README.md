@@ -27,7 +27,7 @@ Exemplo json:
 
 Ao clicar no botão `send` haverá uma reposta de `Status: 201 created` e uma informação referente ao json criado com `"id": 1`
 
-Exemplo da resposta após a requisição:
+Corpo da resposta:
 
     {
       "Id": 1
@@ -39,7 +39,7 @@ Exemplo da resposta após a requisição:
     
 Desse modo conseguimos criar o primeiro filme utilizando a API e salvar dentro do banco de dados.
 
-## Read - Parte 1
+## Read
 
 Agora usaremos o mesmo processo feito acima criando um novo filme para que possamos ver uma lista de filmes já criadas.
 
@@ -52,22 +52,13 @@ Exemplo json
         "Duracao": 126
     }
 
+Podemos realizar a busca dos filme de duas maneiras:
 
-Exemplo da resposta após a requisição:
+1. Fazendo uma requisição do tipo `get` à url http://localhost:5000/filme que retornará uma lista de filmes
 
-    {
-        "id": 2,
-        "titulo": "Homem de Ferro",
-        "diretor": "Jon Favreau",
-        "genero": "Ação, Ficção-científica",
-        "duracao": 126
-    }
+Se houver uma lista de filmes retornará: `Status: 200 OK`
 
-Utilizando o Postman, devemos enviar uma requesição do tipo `get` para http://localhost:5000/filme
-
-Não haverá necessidade de um exemplo json para a solicitação da lista de filmes já criada, pois a requisição apenas retorna uma lista.
-
-Exemplo da resposta após a requisição:
+Corpo da resposta:
 
     [
         {
@@ -86,15 +77,11 @@ Exemplo da resposta após a requisição:
         }
     ]
 
-Note que agora temos dois filmes registrados **De Volta Para o Futuro** e **Homem de Ferro**, cada um com seu próprio `id`.
+2. Fazendo uma requisição do tipo `get` à url http://localhost:5000/filme/id onde `id` será substituído pelo valor 1
 
-## Read - Parte 2
+Se houver o `id` de filmes retornará: `Status: 200 OK`
 
-A parte 2 do Read será apenas uma requisição, sem um exemplo json, já que o mesmo segue o padrão de uma requisição `get` para a url http://localhost:5000/filme só que agora através de um id nessa url.
-
-Dentro do Postman faremos uma solicitação do tipo `get` para http://localhost:5000/filme/1. O valor 1 representa o id do filme **De Volta Para o Futuro** que foi criado anteriormente
-
-Exemplo da resposta após a requisição:
+Corpo da resposta:
 
     {
         "id": 1,
@@ -105,9 +92,9 @@ Exemplo da resposta após a requisição:
         "horaDaConsulta": "0001-01-01T00:00:00"
     }
 
-Alterando o valor 1 para 2 receberemos o filme **Homem de Ferro** já que o `id: 2` diz respeito somente a este filme.
+Caso não existir o `id` informado retornará `Status: 404 Not Found`
 
-OBS: a hora da consulta deveria retornar um valor correspondente ao momento que é feito a requisição, mas o valor fica "zerado" por motivos desconhecido. :warning: Em manutenção.
+OBS: A busca por id retorna um campo a mais `horaDaConsulta` que está retornando sempre um tempo padrão. :warning: bug em correção.
 
 ## Update
 
@@ -126,9 +113,23 @@ Exemplo json
 
 Em seguida haverá um resposta `Status: 204 No Content` e ao buscar o filme pelo `id: 1` ou a lista completa de filmes encontraremos o filme **De Volta Para o Futuro II** com título e duração alterados.
 
+Corpo da resposta:
+
+    {
+        "id": 1,
+        "titulo": "De Volta Para o Futuro II",
+        "diretor": "Robert Zemeckis",
+        "genero": "Ficção científica, aventura",
+        "duracao": 108,
+        "horaDaConsulta": "0001-01-01T00:00:00"
+    }
+
 ## Delete
 
+Por fim, deletaremos um dos filmes e mais uma vez utilizando o Postman enviando uma requisição do tipo `delete` para a url 
+http://localhost:5000/filme/1
 
+Em seguida haverá um resposta `Status: 204 No Content` e ao buscar o filme pelo `id: 1` ou a lista completa de filmes não encontraremos mais o filme **De Volta Para o Futuro II**.
 
 :warning: :runner: 
 
