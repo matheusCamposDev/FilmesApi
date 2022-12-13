@@ -111,6 +111,25 @@ OBS: a hora da consulta deveria retornar um valor correspondente ao momento que 
 
 ## Update
 
+Suponda que queriamos registrar o filme **De Volta Para o Futuro II** e por engano registramos o primeiro filme da franquia iremos atualizar apenas o título e a duração do filme.
+
+Mais uma vez com Postman enviaremos uma requisição, agora utilizando o tipo `put`, para url http://localhost:5000/filme/1 
+
+Exemplo json
+
+    {
+        "titulo": "De Volta Para o Futuro II",
+        "diretor": "Robert Zemeckis",
+        "genero": "Ficção científica, aventura",
+        "duracao": 108
+    }
+
+Em seguida haverá um resposta `Status: 204 No Content` e ao buscar o filme pelo `id: 1` ou a lista completa de filmes encontraremos o filme **De Volta Para o Futuro II** com título e duração alterados.
+
+## Delete
+
+
+
 :warning: :runner: 
 
 :construction: Em construção :construction: 
