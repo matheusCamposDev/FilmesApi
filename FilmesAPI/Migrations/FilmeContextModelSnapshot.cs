@@ -23,15 +23,14 @@ namespace FilmesAPI.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Diretor")
-                        .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)");
 
                     b.Property<int>("Duracao")
                         .HasColumnType("int");
 
                     b.Property<string>("Genero")
-                        .HasMaxLength(30)
-                        .HasColumnType("varchar(30)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Titulo")
                         .IsRequired()
